@@ -25,8 +25,9 @@ class Solution:
                 #자를 수 있는 나무 길이 중 최소가 될때까지 실행
                 ans = mid
                 left = mid + 1
-            else:
-                right = mid - 1
+                continue
+            
+            right = mid - 1
 
         self.output(f'{ans}\n')
                 
