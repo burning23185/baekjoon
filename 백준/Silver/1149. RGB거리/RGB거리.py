@@ -9,7 +9,7 @@ class Solution:
     def prevMin(self, cur: int, color : tuple, weight : list) -> int:
         """현재 선택할 수 있는 최소값과 선택한 색깔의 index를 반환"""
         
-        res = 1000000000+1
+        res = self.max_weight + 1
 
         for i in range(len(color)):
             if i == cur:
@@ -25,7 +25,7 @@ class Solution:
         
         color = ('R', 'G', 'B')
         dy = [[] * n for _ in range(n)]
-        self.max_weight = 1000
+        self.max_weight = 1000000
 
         for i in range(n):
             r, g, b = map(int, self.input().split())
