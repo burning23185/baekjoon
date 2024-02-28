@@ -7,7 +7,7 @@ class Solution:
         self.max_weight = sys.maxsize
     
     def prevMin(self, cur: int, color : tuple, weight : list) -> int:
-        """현재 선택할 수 있는 최소값과 선택한 색깔의 index를 반환"""
+        """현재 선택할 수 있는 이전 비용의 최소값 반환"""
         
         res = self.max_weight + 1
 
