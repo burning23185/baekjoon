@@ -28,7 +28,7 @@ class Solution:
 
         while not (a == -1 and b == -1 and c == -1):
             self.output(f'w({a}, {b}, {c}) = {self.w(a,b,c)}\n')
-            a, b, c = map(int, input().split())
+            a, b, c = map(int, self.input().split())
 
 s = Solution()
 s.run()
