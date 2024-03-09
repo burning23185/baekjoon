@@ -4,19 +4,21 @@ class Solution:
     def __init__(self):
         self.input = sys.stdin.readline
         self.output = sys.stdout.write
+    
+    def run(self):
+        n  = int(self.input())
 
-    def answer(self):
-        n = int(self.input())
-        times = [int(i) for i in self.input().rstrip().split()]
-        times.sort()
-        length = len(times)
+        prefix_sum = 0
         res = 0
+        nums = []
 
-        for i in times:
-            res += i*length
-            length -= 1
+        nums = [int(i) for i in self.input().split()]
 
-        self.output(str(res) + '\n')
+        for i in sorted(nums):
+            prefix_sum += i
+            res += prefix_sum
+
+        print(f'{res}\n')
 
 s = Solution()
-s.answer()
+s.run()
