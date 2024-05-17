@@ -6,7 +6,6 @@ def dfs(idx, temp_res = 0, temp_kal = 0):
     
     res = temp_res if res < temp_res else res
 
-    #마지막 인덱스까지 내려왔다면 리턴
     if idx == N :
         return
     
@@ -20,7 +19,6 @@ def dfs(idx, temp_res = 0, temp_kal = 0):
     
     res = temp_res if res < temp_res else res
 
-    #마지막 인덱스까지 내려왔다면 리턴
     if idx == N :
         return
     
