@@ -1,48 +1,37 @@
 import java.io.*;
 
 public class Main {
-	static class Dfs {
-		private int n;
-		private int m;
-		private int[] visited;
-		private StringBuilder result;
+    private static int n;
+    private static int m;
+    private static int[] selected;
+    private static StringBuilder sb;
 
-		public Dfs(int n, int m) {
-			this.n = n;
-			this.m = m;
-			this.visited = new int[n + 1];
-			this.result = new StringBuilder();
-		}
+    static void input() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] inputs = br.readLine().split(" ");
+        n = Integer.parseInt(inputs[0]);
+        m = Integer.parseInt(inputs[1]);
+        selected = new int[m+1];
+        sb = new StringBuilder();
+        br.close();
+    }
 
-		void doDfs(int depth, int now) {
-			if (depth == m) {
-				for (int i = 0; i < m; i++) {
-					result.append(visited[i]).append(" ");
-				}
-				result.append("\n");
-				return;
-			}
+    static void recFunc(int now){
+        if(now == m+1){
+            for(int j = 1 ; j <= m ; j++) sb.append(selected[j]).append(' ');
+            sb.append('\n');
+            return;
+        }
+        for(int i = selected[now - 1] + 1 ; i <= n ; i++){
+            selected[now] = i;
+            recFunc(now + 1);
+            selected[now] = 0;
+        }
+    }
 
-			for (int j = now; j <= n; j++) {
-				visited[depth] = j;
-				doDfs(depth + 1, j+1);
-			}
-		}
-
-		String getResult() {
-			return result.toString();
-		}
-	}
-
-	public static void main(String[] srgs) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String[] inputs = br.readLine().split(" ");
-		int n = Integer.parseInt(inputs[0]);
-		int m = Integer.parseInt(inputs[1]);
-
-		Dfs dfs = new Dfs(n, m);
-		dfs.doDfs(0, 1);
-
-		System.out.println(dfs.getResult());
-	}
+    public static void main(String[] args) throws IOException{
+        input();
+        recFunc(1);
+        System.out.println(sb.toString());
+    }  
 }
