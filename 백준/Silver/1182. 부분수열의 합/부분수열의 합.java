@@ -5,7 +5,6 @@ public class Main {
     private static int target;
     private static int[] nums;
     private static int result;
-    private static StringBuilder sb;
 
     static void input() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,18 +18,15 @@ public class Main {
         inputs = br.readLine().split(" ");
         for(int i = 1 ; i <= n ; i++) nums[i] = Integer.parseInt(inputs[i-1]);
 
-        sb = new StringBuilder();
         br.close();
     }
 
     static void recFunc(int now, int temp_res){
-        if(temp_res + nums[now] == target){
-            result++;
-        }
-
-        if(now == n){
-            return;
-        }
+        
+        if(temp_res + nums[now] == target) result++;
+        
+        if(now == n) return;
+        
 
         recFunc(now + 1, temp_res + nums[now]);
         recFunc(now + 1, temp_res);
