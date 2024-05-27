@@ -69,13 +69,12 @@ class Solution {
                 if(land[i][j] == 1 && !visited[i][j]){
                     Oil oil = this.bfs(i, j, land);
                     for(int y : oil.getPositionsY()){
-                        available_oil.put(y, oil.getTotal() + (available_oil.containsKey(y) ? available_oil.get(y) : 0));
+                        int value = oil.getTotal() + (available_oil.containsKey(y) ? available_oil.get(y) : 0);
+                        available_oil.put(y,value );
+                        answer = answer > value ? answer : value;
                     }
                 }
             }
-        }
-        for(int value : available_oil.values()){
-            answer = answer > value ? answer : value;
         }
         return answer;
     }
