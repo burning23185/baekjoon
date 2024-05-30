@@ -37,7 +37,7 @@ class Solution {
                 continue;
             }
 
-            answer = answer > mid ? answer : mid;
+            answer = mid;
             left = mid+1;
         }
         return answer;
