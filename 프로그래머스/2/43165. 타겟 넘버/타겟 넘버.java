@@ -8,7 +8,7 @@ class Solution {
 
         for(int i = now ; i < dou_nums.length ; i++){
             if(visited[i]) continue;
-            if(temp <= dou_nums[i]) continue;
+             if(temp - dou_nums[i] < target) continue;
 
             visited[i] = true;
             dfs(i + 1, temp - dou_nums[i], target);
