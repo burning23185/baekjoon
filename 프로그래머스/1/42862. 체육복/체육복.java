@@ -7,17 +7,21 @@ class Solution {
         for(int m : lost) temp[m]--;
         
         for(int i = 1 ; i <= n ; i++){
+            //옷이 있는 경우
             if(temp[i] >= 0){
                 answer++;
                 continue;
             }
-            //옷을 도난 당한 경우
+            
             //앞 번호 사람 옷 빌리는 경우
             if(temp[i-1] > 0){
                 temp[i-1]--;
                 answer++;
+                continue;
+            }
+            
             //뒷 번호 사람 옷 빌리는 경우
-            }else if(i != n && temp[i+1] > 0){
+            if(i != n && temp[i+1] > 0){
                 temp[i+1]--;
                 answer++;
             }
