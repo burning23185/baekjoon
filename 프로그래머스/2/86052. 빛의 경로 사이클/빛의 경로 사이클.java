@@ -53,6 +53,7 @@ public class Solution {
     }
 
     private int bfs(Arrow before){
+        if(visited.contains(before)) return 0 ;
         Queue<Arrow> queue = new LinkedList<>();
         queue.offer(before);
 
