@@ -6,25 +6,25 @@ class Solution {
     private Map<Character, Boolean> winner;
     private void checkWinner(){
         for(int i = 0 ; i < board.length ; i++){
-            if(checkCol(i)) winner.put(board[0].charAt(i), true);
-            if(checkRow(i)) winner.put(board[i].charAt(0), true);
+            checkCol(i);
+            checkRow(i);
         }
         checkCross();
     }
 
-    private boolean checkRow(int idx){
+    private void checkRow(int idx){
         char before = board[idx].charAt(0);
         for(int i = 1 ; i < board[0].length() ; i++){
-            if(before != board[idx].charAt(i) || board[idx].charAt(i) == '.') return false;
+            if(before != board[idx].charAt(i) || board[idx].charAt(i) == '.') return;
         }
-        return true;
+        winner.put(before, true);
     }
-    private boolean checkCol(int idx){
+    private void checkCol(int idx){
         char before = board[0].charAt(idx);
         for(int i = 1 ; i < board[0].length() ; i++){
-            if(before != board[i].charAt(idx) || board[i].charAt(idx) == '.') return false;
+            if(before != board[i].charAt(idx) || board[i].charAt(idx) == '.') return;
         }
-        return true;
+        winner.put(before, true);
     }
     private void checkCross(){
         char before = board[0].charAt(0);
