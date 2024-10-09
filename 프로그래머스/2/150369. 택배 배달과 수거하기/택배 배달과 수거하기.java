@@ -5,6 +5,7 @@ class Solution {
         int pickup_flag = n-1;
 
         for (int i = n - 1; i >= 0; i--) {
+            if(delivery_flag < 0 && pickup_flag < 0) break;
             if(deliveries[i] == 0 && pickups[i] == 0) continue;
             int temp = Math.max(deliveries[i], pickups[i]);
             //현재 집의 배달을 완료하기 위한 횟수
