@@ -1,30 +1,39 @@
 
-class Solution {
-
-    private boolean recFunc(String s, int target){
-        if(target == 1) return true;
-        int half_len = target/2;
-        int c = target%2 == 0 ? -1 : 0;
-        boolean res = false;
-
-        for(int i = 0 ; i+target <= s.length() ; i++){
-            for(int j = 1 ; j <= half_len; j++){
-                if(s.charAt(i + half_len - j) != s.charAt(i + half_len + j + c)) {
-                    res = false;
-                    break;
-                }
-                res = true;
-            }
-            if(res) break;
-        }
-        return res;
-    }
+import java.util.*;
+class Solution
+{
     public int solution(String s)
     {
-        int answer = s.length();
-        while(!recFunc(s, answer)){
-            answer--;
+       int left = 0, right = 0;
+        int result = 1;
+
+        if(s.length() != 1) {
+            for (int center = 1; center < s.length() - 1; center++) {
+                left = center - 1;
+                right = center + 1;
+                while (left >= 0 && right <= s.length() - 1) {
+                    if (s.charAt(left) != s.charAt(right))
+                        break;
+
+                    result = right - left + 1 > result ? right - left + 1 : result;
+                    left--;
+                    right++;
+                }
+            }
+
+            for (int center = 0; center <= s.length() - 2; center++) {
+                left = center;
+                right = center + 1;
+                while (left >= 0 && right <= s.length() - 1) {
+                    if (s.charAt(left) != s.charAt(right))
+                        break;
+                    result = right - left + 1 > result ? right - left + 1 : result;
+                    left--;
+                    right++;
+                }
+            }
         }
-        return answer;
+
+        return result;
     }
 }
